@@ -13,7 +13,7 @@ import shutil
 import sys
 
 # set at init time
-node_prefix = '/usr/local' # PREFIX variable from Makefile
+node_prefix = '/usr/bin' # PREFIX variable from Makefile
 install_path = None # base target directory (DESTDIR + PREFIX from Makefile)
 target_defaults = None
 variables = None

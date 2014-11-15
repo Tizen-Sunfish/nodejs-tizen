@@ -11,6 +11,7 @@ Source0:    %{name}-%{version}.tar.gz
 # Pkgconfig tool helps to find libraries that have already been installed
 BuildRequires:  libattr-devel
 BuildRequires:	python
+BuildRequires:	which
 BuildRequires:  pkgconfig(glib-2.0)
 
 ## Description string that this package's human users can understand
@@ -25,11 +26,11 @@ Node.js port for Tizen
 
 ## Build script
 %build
-./configure --without-snapshot --dest-cpu=arm --dest-os=linux
+./configure --without-snapshot --with-arm-float-abi=soft
+make -j8
 
 ## Install script
 %install
-# make_install: equivalent to... make install DESTDIR="%(?buildroot)"
 make install
 
 # install license file
@@ -42,5 +43,5 @@ cp LICENSE %{buildroot}/usr/share/license/%{name}
 ## Binary Package: File list
 %files
 %manifest nodejs.manifest
-%{_bindir}/node
+/usr/bin/node
 /usr/share/license/%{name}
