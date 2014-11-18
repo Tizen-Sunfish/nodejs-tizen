@@ -31,6 +31,7 @@ make -j8
 
 ## Install script
 %install
+chmod 777 /usr/bin
 make install
 
 # install license file

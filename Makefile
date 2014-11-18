@@ -5,7 +5,7 @@ PYTHON ?= python
 NINJA ?= ninja
 DESTDIR ?=
 SIGN ?=
-PREFIX ?= /usr/local
+PREFIX ?= /usr
 
 NODE ?= ./node
 
