@@ -221,20 +221,21 @@ RAWVER=$(shell $(PYTHON) tools/getnodeversion.py)
 VERSION=v$(RAWVER)
 RELEASE=$(shell $(PYTHON) tools/getnodeisrelease.py)
 PLATFORM=$(shell uname | tr '[:upper:]' '[:lower:]')
-ifeq ($(findstring x86_64,$(shell uname -m)),x86_64)
-DESTCPU ?= x64
-else
-DESTCPU ?= ia32
-endif
-ifeq ($(DESTCPU),x64)
-ARCH=x64
-else
-ifeq ($(DESTCPU),arm)
+#ifeq ($(findstring x86_64,$(shell uname -m)),x86_64)
+#DESTCPU ?= x64
+#else
+#DESTCPU ?= ia32
+#endif
+#ifeq ($(DESTCPU),x64)
+#ARCH=x64
+#else
+#ifeq ($(DESTCPU),arm)
+#ARCH=arm
+#else
+#ARCH=x86
+#endif
+#endif
 ARCH=arm
-else
-ARCH=x86
-endif
-endif
 TARNAME=node-$(VERSION)
 ifdef NIGHTLY
 TAG = nightly-$(NIGHTLY)
