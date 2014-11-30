@@ -1,3 +1,4 @@
+%define   _base node
 ## Basic Descriptions of this package
 Name:       nodejs
 Summary:    Node.js Event IO engine for V8 JavaScript
@@ -12,11 +13,12 @@ Source0:    %{name}-%{version}.tar.gz
 BuildRequires:  libattr-devel
 BuildRequires:	python
 BuildRequires:	which
+BuildRequires:	sudo
 BuildRequires:  pkgconfig(glib-2.0)
 
 ## Description string that this package's human users can understand
 %description
-Node.js port for Tizen
+Node.js port for Tizen 2.2
 
 ## Preprocess script
 %prep
@@ -27,16 +29,14 @@ Node.js port for Tizen
 ## Build script
 %build
 ./configure --without-snapshot --with-arm-float-abi=soft
-make -j8
+make binary -j8
 
 ## Install script
 %install
-chmod 777 /usr/bin
-make install
 
 # install license file
-mkdir -p %{buildroot}/usr/share/license
-cp LICENSE %{buildroot}/usr/share/license/%{name}
+mkdir -p /usr/share/license
+cp LICENSE /usr/share/license/%{name}
 
 ## Postprocess script
 %post 
