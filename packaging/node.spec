@@ -1,7 +1,7 @@
 %define   _base node
 ## Basic Descriptions of this package
 Name:       node
-Summary:    Node.js Event IO engine for V8 JavaScript
+Summary:    Node.js Event IO Engine for V8 JavaScript
 Version:		0.11.14
 Release:    1
 Group:      System/Libraries
