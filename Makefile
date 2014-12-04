@@ -221,6 +221,9 @@ RAWVER=$(shell $(PYTHON) tools/getnodeversion.py)
 VERSION=v$(RAWVER)
 RELEASE=$(shell $(PYTHON) tools/getnodeisrelease.py)
 PLATFORM=$(shell uname | tr '[:upper:]' '[:lower:]')
+
+# Porting to Tizen-ODROID: target architecture is set as arm
+
 #ifeq ($(findstring x86_64,$(shell uname -m)),x86_64)
 #DESTCPU ?= x64
 #else
@@ -316,9 +319,10 @@ $(TARBALL): release-only node doc
 tar: $(TARBALL)
 
 $(BINARYTAR): release-only
-	rm -rf $(BINARYNAME)
-	rm -rf out/deps out/Release
-	$(PYTHON) ./configure --prefix=/ --without-snapshot --dest-cpu=$(DESTCPU) --tag=$(TAG) $(CONFIG_FLAGS)
+	# Porting to Tizen-ODROID: configure process is done by spec.
+	#rm -rf $(BINARYNAME)
+	#rm -rf out/deps out/Release
+	#$(PYTHON) ./configure --prefix=/ --without-snapshot --dest-cpu=$(DESTCPU) --tag=$(TAG) $(CONFIG_FLAGS)
 	$(MAKE) install DESTDIR=$(BINARYNAME) V=$(V) PORTABLE=1
 	cp README.md $(BINARYNAME)
 	cp LICENSE $(BINARYNAME)
